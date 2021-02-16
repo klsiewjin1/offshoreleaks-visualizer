@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "offshoreleaks-visualizer"
+version = "0.1.0"
+description = ""
+authors = ["Siew Jin Kung Lim <klsiewjin1@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = "^0.63.0"
+neo4j = "^4.2.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

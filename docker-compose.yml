@@ -1,0 +1,22 @@
+services:
+  neo4j:
+    image: neo4j
+    ports:
+    - 7474:7474
+    - 7687:7687
+    volumes:
+      - ./db/neo4j/data:/data
+      - ./db/neo4j/logs:/logs
+      - ./db/neo4j/plugins:/plugins
+      - ./db/neo4j/conf:/var/lib/neo4j/conf
+      - ./db/neo4j/import:/var/lib/neo4j/import
+    env_file:
+      - .env
+  backend:
+    build:
+      dockerfile: backend.dockerfile
+      context: ./backend
+    env_file:
+      - .env
+    depends_on:
+      - neo4j
