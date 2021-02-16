@@ -1,15 +1,18 @@
+from neo4j import Session
+
 from db.db import driver
 from schema.osl import OSLModelIn
 
 
-def get_session():
+def get_session() -> Session:
     return driver.session()
 
 
-def generate_filter(query_in: OSLModelIn):
+def generate_filter(query_in: OSLModelIn) -> str:
     filters = []
     for filter_attr in query_in.dict():
-        if query_in.__getattribute__(filter_attr):
+        attr = query_in.__getattribute__(filter_attr)
+        if attr and isinstance(attr, str):
             filters.append(f"""n.{filter_attr} = "{query_in.__getattribute__(filter_attr)}" """)
 
     return " AND ".join(filters)
