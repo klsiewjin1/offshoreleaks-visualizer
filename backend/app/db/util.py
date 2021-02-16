@@ -1,8 +1,18 @@
 from db.db import driver
+from schema.osl import OSLModelIn
 
 
 def get_session():
     return driver.session()
+
+
+def generate_filter(query_in: OSLModelIn):
+    filters = []
+    for filter_attr in query_in.dict():
+        if query_in.__getattribute__(filter_attr):
+            filters.append(f"""n.{filter_attr} = "{query_in.__getattribute__(filter_attr)}" """)
+
+    return " AND ".join(filters)
 
 
 def run_get_query(query):
