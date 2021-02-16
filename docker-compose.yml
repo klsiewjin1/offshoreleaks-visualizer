@@ -20,3 +20,9 @@ services:
       - .env
     depends_on:
       - neo4j
+  frontend:
+    build:
+      dockerfile: frontend.dockerfile
+      context: ./frontend
+    depends_on:
+      - backend
