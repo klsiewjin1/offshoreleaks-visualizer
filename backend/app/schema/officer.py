@@ -1,16 +1,17 @@
-from pydantic import BaseModel
+from schema.osl import OSLModel
 
 
-class BaseOfficer(BaseModel):
-    sourceID: str
-    note: str
-    valid_until: str
-    name: str
-    country_codes: str
-    countries: str
-    node_id: str
+class BaseOfficer(OSLModel):
     status: str
 
 
 class OfficerIn(BaseOfficer):
     pass
+
+
+class OfficerOut(BaseOfficer):
+    pass
+
+
+class OfficerInDB(BaseOfficer):
+    id: int
