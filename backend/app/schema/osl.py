@@ -2,7 +2,7 @@ from pydantic.main import BaseModel
 
 
 class OSLModel(BaseModel):
-    node_id: int
+    node_id: str
     name: str
     sourceID: str
     valid_until: str

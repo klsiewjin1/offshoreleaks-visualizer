@@ -1,22 +1,17 @@
 from db.db import driver
 
 
-def get_session(db_type='write'):
-    # if DB.get(db_type):
-    # 	return DB[db_type]
-
-    # DB[db_type] = driver.session()
+def get_session():
     return driver.session()
 
 
 def run_get_query(query):
-    def fetch(tx, query):
-        return tx.run(query)
-
-    session = get_session()
-    result = session.read_transaction(fetch, query)
-    session.close()
-    return result
+    with get_session() as session:
+        tx = session.begin_transaction()
+        result = tx.run(query)
+        holder = [dict(i['n']) for i in result]
+        tx.close()
+        return holder
 
 
 def run_post_query(query, data):
