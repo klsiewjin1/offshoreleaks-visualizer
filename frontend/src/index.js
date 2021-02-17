@@ -1,25 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css'
+import Graph2D from "./components/Graph2D"
 
-import {ForceGraph2D, ForceGraph3D, ForceGraphVR, ForceGraphAR} from 'react-force-graph';
-import EntityApi from './components/entityApi'
-
-
-// ReactDOM.render(
-//     <ForceGraph2D
-//         graphData={EntityApi.hits}
-//         nodeId={"node_id"}
-//     />,
-//     document.getElementById('root')
-// );
 
 ReactDOM.render(
     <React.StrictMode>
-        <EntityApi/>
+        <Graph2D/>
     </React.StrictMode>,
     document.getElementById('root')
 );

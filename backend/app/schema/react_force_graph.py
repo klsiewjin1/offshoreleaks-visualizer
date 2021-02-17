@@ -14,6 +14,12 @@ class RelationshipReactForceGraphInput(BaseModel):
     name: Optional[str]
 
 
+class GraphNode(BaseModel):
+    name: str
+    node_id: str
+    node_type: str
+
+
 class ReactForceGraphInput(BaseModel):
-    nodes: List[dict]
+    nodes: List[GraphNode]
     links: List[RelationshipReactForceGraphInput]
