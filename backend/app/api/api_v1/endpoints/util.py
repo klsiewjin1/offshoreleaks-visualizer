@@ -14,14 +14,19 @@ def get_nodes_and_relationships(model, **kwargs):
     node = get_node_from_neomodel(model, **kwargs)
 
     connected_nodes = node.serialize_connections
-    nodes = [node.serialize]
+    serialized = node.serialize
+    tmp = serialized.get("node_properties")
+    tmp["node_type"] = serialized.get("node_type")
+    nodes = [tmp]
     relationships = []
     for relationship_type in connected_nodes:
         if len(relationship_type.get("nodes_related")) > 0:
             rel_type = relationship_type.get("nodes_type")
             for connected_node in relationship_type.get("nodes_related"):
-                nodes.append(connected_node)
+                tmp = connected_node.get("node_properties")
+                tmp["node_type"] = connected_node.get("node_type")
+                nodes.append(tmp)
                 relationships.append(
                     {"source": node.node_id, "target": connected_node.get("node_properties").get("node_id"),
-                     "type": rel_type})
+                     "type": rel_type, "name": connected_node.get("node_type")})
     return {"nodes": nodes, "links": relationships}

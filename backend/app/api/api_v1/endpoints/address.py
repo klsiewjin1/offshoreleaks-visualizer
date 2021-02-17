@@ -35,6 +35,6 @@ def search_addresses(query: AddressIn, skip=0, limit=25) -> Any:
             result in results]
 
 
-@router.get("/{node_id}/custom", response_model=ReactForceGraphInput)
+@router.get("/{node_id}/react-force-graph", response_model=ReactForceGraphInput)
 def custom_read_address(node_id: str) -> Any:
     return get_nodes_and_relationships(model, node_id=node_id)
