@@ -1,5 +1,4 @@
-from typing import Optional
-
+from typing import Optional, Any
 
 from schema.osl import OSLModel, OSLModelIn
 
@@ -9,7 +8,7 @@ class BaseAddress(OSLModel):
 
 
 class AddressOut(BaseAddress):
-    pass
+    connected_nodes: Optional[list]
 
 
 class Address(BaseAddress):

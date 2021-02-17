@@ -1,3 +1,5 @@
+from typing import Any, Optional
+
 from schema.osl import OSLModel, OSLModelIn
 
 
@@ -10,7 +12,7 @@ class OfficerIn(OSLModelIn):
 
 
 class OfficerOut(BaseOfficer):
-    pass
+    connected_nodes: Optional[list]
 
 
 class OfficerInDB(BaseOfficer):

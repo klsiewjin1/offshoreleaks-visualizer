@@ -1,3 +1,5 @@
+from typing import Optional
+
 from schema.osl import OSLModel, OSLModelIn
 
 
@@ -6,7 +8,7 @@ class BaseOther(OSLModel):
 
 
 class OtherOut(BaseOther):
-    pass
+    connected_nodes: Optional[list]
 
 
 class Other(BaseOther):

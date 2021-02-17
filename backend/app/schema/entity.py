@@ -8,17 +8,17 @@ from schema.osl import OSLModel, OSLModelIn
 class BaseEntity(OSLModel):
     jurisdiction: str
     jurisdiction_description: str
-    incorporation_date: date
+    incorporation_date: str
     inactivation_date: Optional[str]
-    struck_off_date: date
-    closed_date: date
+    struck_off_date: str
+    closed_date: str
     ibcRUC: str
     status: Optional[str]
     company_type: str
 
 
 class EntityOut(BaseEntity):
-    pass
+    connected_nodes: Optional[list]
 
 
 class Entity(BaseEntity):

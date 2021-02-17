@@ -4,9 +4,26 @@ from api.api_v1.api import api_router
 from core.config import settings
 from db.db import driver
 from db.util import get_session
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:8888",
+    "http://localhost"
+]
 
 app = FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
+)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -28,3 +45,8 @@ def close_db_connection():
 
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+
+@app.get("/")
+def index():
+    return {"Hello": "World!"}

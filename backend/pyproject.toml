@@ -8,6 +8,7 @@ authors = ["Siew Jin Kung Lim <klsiewjin1@gmail.com>"]
 python = "^3.7"
 fastapi = "^0.63.0"
 neo4j = "^4.2.1"
+neomodel = "^4.0.2"
 
 [tool.poetry.dev-dependencies]
 

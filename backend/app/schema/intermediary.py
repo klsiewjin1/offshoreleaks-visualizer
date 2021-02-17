@@ -1,3 +1,5 @@
+from typing import Optional, Any
+
 from schema.osl import OSLModel, OSLModelIn
 
 
@@ -6,8 +8,7 @@ class BaseIntermediary(OSLModel):
 
 
 class IntermediaryOut(BaseIntermediary):
-    pass
-
+    connected_nodes: Optional[list]
 
 class Intermediary(BaseIntermediary):
     pass

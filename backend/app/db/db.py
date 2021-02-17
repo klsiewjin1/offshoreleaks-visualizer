@@ -1,4 +1,5 @@
 from neo4j import GraphDatabase
+from neomodel import config
 
 from core.config import settings
 
@@ -10,3 +11,4 @@ driver = GraphDatabase.driver(
         __auth[0], __auth[1]
     )
 )
+config.DATABASE_URL = f"bolt://{__auth[0]}:{__auth[1]}@{settings.PROJECT_NAME}_neo4j_1:7687"  # default
