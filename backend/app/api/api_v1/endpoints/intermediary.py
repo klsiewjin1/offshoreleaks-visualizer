@@ -12,7 +12,7 @@ label = model.__label__
 
 
 @router.get("/", response_model=List[Intermediary])
-def read_intermediaries(skip=0, limit=25) -> Any:
+def read_intermediaries(skip:int=0, limit:int=25) -> Any:
     results = model.nodes[skip:limit]
     return [Intermediary(**result.serialize.get("node_properties")) for result in results]
 

@@ -12,7 +12,7 @@ label = model.__label__
 
 
 @router.get("/", response_model=List[Other])
-def read_others(skip=0, limit=25):
+def read_others(skip: int = 0, limit: int = 25):
     results = model.nodes[skip:limit]
     return [Other(**result.serialize.get("node_properties")) for result in results]
 
@@ -29,4 +29,5 @@ def read_other(node_id: str) -> Any:
 def read_officers(query: OtherIn, skip=0, limit=25) -> Any:
     filters = {k: v for k, v in query.dict().items() if v is not None}
     results = model.nodes.filter(**filters)
-    return [OtherOut(**result.serialize.get("node_properties"), connected_nodes=result.serialize_connections) for result in results]
+    return [OtherOut(**result.serialize.get("node_properties"), connected_nodes=result.serialize_connections) for result
+            in results]

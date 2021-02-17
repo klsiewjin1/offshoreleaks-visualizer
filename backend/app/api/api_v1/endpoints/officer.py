@@ -12,7 +12,7 @@ label = model.__label__
 
 
 @router.get("/", response_model=List[Officer])
-def read_officers(skip=0, limit=25):
+def read_officers(skip:int=0, limit:int=25):
     results = model.nodes[skip:limit]
     return [Officer(**result.serialize.get("node_properties")) for result in results]
 

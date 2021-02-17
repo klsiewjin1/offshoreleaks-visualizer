@@ -12,7 +12,7 @@ label = model.__label__
 
 
 @router.get("/", response_model=List[Entity])
-def read_entities(skip=0, limit=25) -> Any:
+def read_entities(skip:int=0, limit:int=25) -> Any:
     results = model.nodes[skip:limit]
     return [Entity(**result.serialize.get("node_properties")) for result in results]
 
