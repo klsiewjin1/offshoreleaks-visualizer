@@ -12,7 +12,7 @@ def get_node_from_neomodel(model, **kwargs):
 def get_nodes_and_relationships(model, **kwargs):
     """Instead of having to do the transformations on front-end, do it here and create a custom endpoint"""
     node = get_node_from_neomodel(model, **kwargs)
-
+    # We can do a BFS here with depth to run order-level traversals
     connected_nodes = node.serialize_connections
     serialized = node.serialize
     tmp = serialized.get("node_properties")

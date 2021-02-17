@@ -1,7 +1,7 @@
 import axios from "axios";
 import {apiBaseURL} from "../config/settings";
 
-export default class NewEntityApi {
+export default class EntityApi {
     static getEntities() {
         return axios.get(apiBaseURL + "/entities")
             .then(response => response.data)
