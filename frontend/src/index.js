@@ -3,12 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css'
+
+import {ForceGraph2D, ForceGraph3D, ForceGraphVR, ForceGraphAR} from 'react-force-graph';
+import EntityApi from './components/entityApi'
+
+
+
+// ReactDOM.render(
+//     <ForceGraph2D
+//         graphData={myData}
+//         nodeId={"id"}
+//     />,
+//     document.getElementById('root')
+// );
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <EntityApi/>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
