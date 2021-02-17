@@ -1,6 +1,7 @@
 import settings from '../config/settings';
 import axios from 'axios';
 import React, {Component} from 'react';
+import {ForceGraph2D} from "react-force-graph";
 
 const {apiBaseURL} = settings;
 
@@ -10,7 +11,7 @@ class EntityApi extends Component {
         super(props);
 
         this.state = {
-            hits: [],
+            hits: {},
             isLoading: false,
             error: null
         }
@@ -19,7 +20,7 @@ class EntityApi extends Component {
     componentWillMount() {
         this.setState({isLoading: true});
         axios.get(apiBaseURL + "/entities/")
-            .then(result => this.setState({hits: result.data, isLoading: false}))
+            .then(result => this.setState({hits: {"nodes":result.data, "links": []}, isLoading: false}))
             .catch(error => this.setState({error, isLoading: false}));
     }
 
@@ -32,13 +33,10 @@ class EntityApi extends Component {
             return <p>Loading ...</p>
         }
         return (
-            <ul>
-                {hits.map(hit =>
-                    <li key={hit.node_id}>
-                        {hit.name}
-                    </li>
-                )}
-            </ul>
+            <ForceGraph2D
+                graphData={hits}
+                nodeId={"node_id"}
+            />
         );
     }
 }

@@ -9,11 +9,10 @@ import {ForceGraph2D, ForceGraph3D, ForceGraphVR, ForceGraphAR} from 'react-forc
 import EntityApi from './components/entityApi'
 
 
-
 // ReactDOM.render(
 //     <ForceGraph2D
-//         graphData={myData}
-//         nodeId={"id"}
+//         graphData={EntityApi.hits}
+//         nodeId={"node_id"}
 //     />,
 //     document.getElementById('root')
 // );
