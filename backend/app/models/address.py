@@ -32,6 +32,7 @@ class ADDRESS(StructuredNode, NodeUtils):
                 'countries': self.countries,
                 'node_id': self.node_id,
             },
+            'node_type': self.__label__
         }
 
     @property

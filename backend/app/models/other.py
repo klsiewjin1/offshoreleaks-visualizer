@@ -33,6 +33,7 @@ class OTHER(StructuredNode, NodeUtils):
                 'country_codes': self.country_codes,
                 'note': self.note
             },
+            'node_type': self.__label__
         }
 
     @property

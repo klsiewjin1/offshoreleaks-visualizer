@@ -34,6 +34,7 @@ class INTERMEDIARY(StructuredNode, NodeUtils):
                 'status': self.status,
                 'note': self.note
             },
+            'node_type': self.__label__
         }
 
     @property

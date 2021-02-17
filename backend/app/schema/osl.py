@@ -21,3 +21,7 @@ class OSLModelIn(BaseModel):
     note: Optional[str]
     country_codes: Optional[str]
     countries: Optional[str]
+
+
+class OSLModelOut(OSLModel):
+    connected_nodes: Optional[list]

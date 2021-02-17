@@ -32,6 +32,7 @@ class OFFICER(StructuredNode, NodeUtils):
                 'node_id': self.node_id,
                 'note': self.note
             },
+            'node_type': self.__label__
         }
 
     @property

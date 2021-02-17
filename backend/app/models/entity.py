@@ -57,6 +57,7 @@ class ENTITY(StructuredNode, NodeUtils):
                 'status': self.status,
                 'company_type': self.company_type
             },
+            'node_type': self.__label__
         }
 
     @property

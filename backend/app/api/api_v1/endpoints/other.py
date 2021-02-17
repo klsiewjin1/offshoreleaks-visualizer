@@ -2,8 +2,10 @@ from typing import List, Any
 
 from fastapi import APIRouter, HTTPException
 
+from api.api_v1.endpoints.util import get_nodes_and_relationships
 from models.other import OTHER
 from schema.other import OtherOut, Other, OtherIn
+from schema.react_force_graph import ReactForceGraphInput
 
 router = APIRouter()
 
@@ -31,3 +33,7 @@ def read_officers(query: OtherIn, skip=0, limit=25) -> Any:
     results = model.nodes.filter(**filters)
     return [OtherOut(**result.serialize.get("node_properties"), connected_nodes=result.serialize_connections) for result
             in results]
+
+@router.get("/{node_id}/custom", response_model=ReactForceGraphInput)
+def custom_read_other(node_id: str) -> Any:
+    return get_nodes_and_relationships(model, node_id=node_id)

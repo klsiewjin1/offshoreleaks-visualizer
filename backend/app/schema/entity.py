@@ -2,7 +2,7 @@ from typing import Optional, Any
 
 from pydantic.schema import date
 
-from schema.osl import OSLModel, OSLModelIn
+from schema.osl import OSLModel, OSLModelIn, OSLModelOut
 
 
 class BaseEntity(OSLModel):
@@ -17,8 +17,8 @@ class BaseEntity(OSLModel):
     company_type: str
 
 
-class EntityOut(BaseEntity):
-    connected_nodes: Optional[list]
+class EntityOut(BaseEntity, OSLModelOut):
+    pass
 
 
 class Entity(BaseEntity):
